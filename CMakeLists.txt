@@ -9,6 +9,7 @@ include_directories(
         "libraries/sdl/include"
         "libraries/imgui/backends"
 )
+file(GLOB SOURCES "src/*.cpp")
 
 add_executable(63549 main.cpp
         ./libraries/imgui/imgui.cpp
@@ -18,6 +19,11 @@ add_executable(63549 main.cpp
         ./libraries/imgui/imgui_tables.cpp
         ./libraries/imgui/backends/imgui_impl_sdl3.cpp
         ./libraries/imgui/backends/imgui_impl_sdlrenderer3.cpp
+        ./src/Filter.cpp
+        ${SOURCES}
+        src/Oscillator.cpp
+        include/Oscillator.h
+
 )
 
 if (APPLE)
