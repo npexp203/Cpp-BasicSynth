@@ -23,6 +23,8 @@ add_executable(63549 main.cpp
         ${SOURCES}
         src/Oscillator.cpp
         include/Oscillator.h
+        src/Synth.cpp
+        include/Synth.h
 
 )
 

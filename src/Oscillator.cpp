@@ -6,45 +6,68 @@
 #include <cmath>
 
 
-Oscillator::Oscillator(WaveForm form, float freq): frequency(freq), waveform(form) {
+Oscillator::Oscillator():
+                            frequency(440.0f),
+                            sampleRate(44100.0f),
+                            waveform(WaveForm::TRIANGLE),
+                            phase(0.0f),
+                            noise_gen(std::random_device{}()),
+                            noise_dist(-0.5f,0.5f) {}
+
+float Oscillator::getFrequency() const {
+    return frequency;
 }
-void Oscillator::setFrequencyOffset(float offset) {
-    if (offset < -5.0f) offset = -5.0f;
-    if (offset > 5.0f)  offset = 5.0f;
 
-    frequencyOffset = offset;
+float Oscillator::getSampleRate() const {
+    return sampleRate;
+}
+
+WaveForm Oscillator::getWaveform() const {
+    return waveform;
+}
+void Oscillator::setWaveForm(WaveForm waveform) {
+    this->waveform = waveform;
+}
+void Oscillator::setFrequency(float freq) {
+    frequency = freq;
+}
+void Oscillator::setSampleRate(float sr) {
+    sampleRate = sr;
 }
 
 
+void Oscillator::generateBuffer(float* buffer, int numFrames) {
+    float phaseIncrement = frequency / sampleRate;
 
-float Oscillator::getSample(float time) {
-float phase = 2.0f * M_PI * (frequency + frequencyOffset) * time;
-    float sample = 0.0f;
+    for (int i = 0; i < numFrames * 2; i += 2) {
+        float sample = 0.0f;
 
-    switch (waveform) {
-        case WaveForm::SINE:
-            sample = sin(phase);
-            break;
+        switch (waveform) {
 
-        case WaveForm::SQUARE:
-            sample = sin(phase) > 0 ? 1.0f : -1.0f;
-            break;
+            case WaveForm::TRIANGLE:
+                sample = phase < 0.5f
+                    ? 4.0f * phase - 1.0f
+                    : 3.0f - 4.0f * phase;
+                sample *= 0.5f;
+                break;
 
-        case WaveForm::TRIANGLE: {
-            float t_norm = fmod(phase / (2.0f * M_PI), 1.0f);
-            sample = 4.0f * fabs(t_norm - 0.5f) - 1.0f;
-            break;
+            case WaveForm::SAW:
+                sample = (2.0f * phase - 1.0f) * 0.5f;
+                break;
+
+            case WaveForm::NOISE:
+                sample = noise_dist(noise_gen);
+                break;
         }
 
-        case WaveForm::SAWTOOTH: {
-            float t_norm = fmod(phase / (2.0f * M_PI), 1.0f);
-            sample = 2.0f * t_norm - 1.0f;
-            break;
+        buffer[i] = sample;       // Left always even
+        buffer[i + 1] = sample;   // Right always odd
+
+        phase += phaseIncrement;
+        if (phase >= 1.0f) {
+            phase -= 1.0f;
         }
-        default:
-            sample = 0.0f;
     }
-
 }
 
 

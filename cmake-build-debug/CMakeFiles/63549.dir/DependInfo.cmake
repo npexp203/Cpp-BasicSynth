@@ -18,6 +18,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/pc/Desktop/DEV4 PROJET AOUT 25/63549/main.cpp" "CMakeFiles/63549.dir/main.cpp.obj" "gcc" "CMakeFiles/63549.dir/main.cpp.obj.d"
   "C:/Users/pc/Desktop/DEV4 PROJET AOUT 25/63549/src/Filter.cpp" "CMakeFiles/63549.dir/src/Filter.cpp.obj" "gcc" "CMakeFiles/63549.dir/src/Filter.cpp.obj.d"
   "C:/Users/pc/Desktop/DEV4 PROJET AOUT 25/63549/src/Oscillator.cpp" "CMakeFiles/63549.dir/src/Oscillator.cpp.obj" "gcc" "CMakeFiles/63549.dir/src/Oscillator.cpp.obj.d"
+  "C:/Users/pc/Desktop/DEV4 PROJET AOUT 25/63549/src/Synth.cpp" "CMakeFiles/63549.dir/src/Synth.cpp.obj" "gcc" "CMakeFiles/63549.dir/src/Synth.cpp.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

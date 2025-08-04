@@ -368,6 +368,30 @@ src/Oscillator.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/src/Oscillator.cpp.s
 .PHONY : src/Oscillator.cpp.s
 
+src/Synth.obj: src/Synth.cpp.obj
+.PHONY : src/Synth.obj
+
+# target to build an object file
+src/Synth.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/src/Synth.cpp.obj
+.PHONY : src/Synth.cpp.obj
+
+src/Synth.i: src/Synth.cpp.i
+.PHONY : src/Synth.i
+
+# target to preprocess a source file
+src/Synth.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/src/Synth.cpp.i
+.PHONY : src/Synth.cpp.i
+
+src/Synth.s: src/Synth.cpp.s
+.PHONY : src/Synth.s
+
+# target to generate assembly for a file
+src/Synth.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/src/Synth.cpp.s
+.PHONY : src/Synth.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -407,6 +431,9 @@ help:
 	@echo ... src/Oscillator.obj
 	@echo ... src/Oscillator.i
 	@echo ... src/Oscillator.s
+	@echo ... src/Synth.obj
+	@echo ... src/Synth.i
+	@echo ... src/Synth.s
 .PHONY : help
 
 

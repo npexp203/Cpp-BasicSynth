@@ -22,6 +22,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/63549.dir/src/Filter.cpp.obj.d"
   "CMakeFiles/63549.dir/src/Oscillator.cpp.obj"
   "CMakeFiles/63549.dir/src/Oscillator.cpp.obj.d"
+  "CMakeFiles/63549.dir/src/Synth.cpp.obj"
+  "CMakeFiles/63549.dir/src/Synth.cpp.obj.d"
   "lib63549.dll.a"
 )
 
