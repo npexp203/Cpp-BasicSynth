@@ -320,6 +320,30 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+src/AudioEngine.obj: src/AudioEngine.cpp.obj
+.PHONY : src/AudioEngine.obj
+
+# target to build an object file
+src/AudioEngine.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/src/AudioEngine.cpp.obj
+.PHONY : src/AudioEngine.cpp.obj
+
+src/AudioEngine.i: src/AudioEngine.cpp.i
+.PHONY : src/AudioEngine.i
+
+# target to preprocess a source file
+src/AudioEngine.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/src/AudioEngine.cpp.i
+.PHONY : src/AudioEngine.cpp.i
+
+src/AudioEngine.s: src/AudioEngine.cpp.s
+.PHONY : src/AudioEngine.s
+
+# target to generate assembly for a file
+src/AudioEngine.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/src/AudioEngine.cpp.s
+.PHONY : src/AudioEngine.cpp.s
+
 src/Envelope.obj: src/Envelope.cpp.obj
 .PHONY : src/Envelope.obj
 
@@ -449,6 +473,9 @@ help:
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
+	@echo ... src/AudioEngine.obj
+	@echo ... src/AudioEngine.i
+	@echo ... src/AudioEngine.s
 	@echo ... src/Envelope.obj
 	@echo ... src/Envelope.i
 	@echo ... src/Envelope.s

@@ -6,7 +6,7 @@
 #define OSCILLATOR_H
 
 #include <random>
-enum class WaveForm{SAW,TRIANGLE,NOISE};
+enum class WaveForm{TRIANGLE,SAW,NOISE};
 
 class Oscillator {
 public:

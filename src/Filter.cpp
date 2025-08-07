@@ -3,7 +3,6 @@
 //
 
 #include "../include/Filter.h"
-
 #include <algorithm>
 #include <math.h>
 

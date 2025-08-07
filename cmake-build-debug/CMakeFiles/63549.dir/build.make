@@ -206,11 +206,26 @@ CMakeFiles/63549.dir/src/Filter.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/63549.dir/src/Filter.cpp.s"
 	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\pc\Desktop\DEV4 PROJET AOUT 25\63549\src\Filter.cpp" -o CMakeFiles\63549.dir\src\Filter.cpp.s
 
+CMakeFiles/63549.dir/src/AudioEngine.cpp.obj: CMakeFiles/63549.dir/flags.make
+CMakeFiles/63549.dir/src/AudioEngine.cpp.obj: CMakeFiles/63549.dir/includes_CXX.rsp
+CMakeFiles/63549.dir/src/AudioEngine.cpp.obj: C:/Users/pc/Desktop/DEV4\ PROJET\ AOUT\ 25/63549/src/AudioEngine.cpp
+CMakeFiles/63549.dir/src/AudioEngine.cpp.obj: CMakeFiles/63549.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\pc\Desktop\DEV4 PROJET AOUT 25\63549\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/63549.dir/src/AudioEngine.cpp.obj"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/63549.dir/src/AudioEngine.cpp.obj -MF CMakeFiles\63549.dir\src\AudioEngine.cpp.obj.d -o CMakeFiles\63549.dir\src\AudioEngine.cpp.obj -c "C:\Users\pc\Desktop\DEV4 PROJET AOUT 25\63549\src\AudioEngine.cpp"
+
+CMakeFiles/63549.dir/src/AudioEngine.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/63549.dir/src/AudioEngine.cpp.i"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\pc\Desktop\DEV4 PROJET AOUT 25\63549\src\AudioEngine.cpp" > CMakeFiles\63549.dir\src\AudioEngine.cpp.i
+
+CMakeFiles/63549.dir/src/AudioEngine.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/63549.dir/src/AudioEngine.cpp.s"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\pc\Desktop\DEV4 PROJET AOUT 25\63549\src\AudioEngine.cpp" -o CMakeFiles\63549.dir\src\AudioEngine.cpp.s
+
 CMakeFiles/63549.dir/src/Envelope.cpp.obj: CMakeFiles/63549.dir/flags.make
 CMakeFiles/63549.dir/src/Envelope.cpp.obj: CMakeFiles/63549.dir/includes_CXX.rsp
 CMakeFiles/63549.dir/src/Envelope.cpp.obj: C:/Users/pc/Desktop/DEV4\ PROJET\ AOUT\ 25/63549/src/Envelope.cpp
 CMakeFiles/63549.dir/src/Envelope.cpp.obj: CMakeFiles/63549.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\pc\Desktop\DEV4 PROJET AOUT 25\63549\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/63549.dir/src/Envelope.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\pc\Desktop\DEV4 PROJET AOUT 25\63549\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/63549.dir/src/Envelope.cpp.obj"
 	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/63549.dir/src/Envelope.cpp.obj -MF CMakeFiles\63549.dir\src\Envelope.cpp.obj.d -o CMakeFiles\63549.dir\src\Envelope.cpp.obj -c "C:\Users\pc\Desktop\DEV4 PROJET AOUT 25\63549\src\Envelope.cpp"
 
 CMakeFiles/63549.dir/src/Envelope.cpp.i: cmake_force
@@ -225,7 +240,7 @@ CMakeFiles/63549.dir/src/Oscillator.cpp.obj: CMakeFiles/63549.dir/flags.make
 CMakeFiles/63549.dir/src/Oscillator.cpp.obj: CMakeFiles/63549.dir/includes_CXX.rsp
 CMakeFiles/63549.dir/src/Oscillator.cpp.obj: C:/Users/pc/Desktop/DEV4\ PROJET\ AOUT\ 25/63549/src/Oscillator.cpp
 CMakeFiles/63549.dir/src/Oscillator.cpp.obj: CMakeFiles/63549.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\pc\Desktop\DEV4 PROJET AOUT 25\63549\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/63549.dir/src/Oscillator.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\pc\Desktop\DEV4 PROJET AOUT 25\63549\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/63549.dir/src/Oscillator.cpp.obj"
 	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/63549.dir/src/Oscillator.cpp.obj -MF CMakeFiles\63549.dir\src\Oscillator.cpp.obj.d -o CMakeFiles\63549.dir\src\Oscillator.cpp.obj -c "C:\Users\pc\Desktop\DEV4 PROJET AOUT 25\63549\src\Oscillator.cpp"
 
 CMakeFiles/63549.dir/src/Oscillator.cpp.i: cmake_force
@@ -240,7 +255,7 @@ CMakeFiles/63549.dir/src/Synth.cpp.obj: CMakeFiles/63549.dir/flags.make
 CMakeFiles/63549.dir/src/Synth.cpp.obj: CMakeFiles/63549.dir/includes_CXX.rsp
 CMakeFiles/63549.dir/src/Synth.cpp.obj: C:/Users/pc/Desktop/DEV4\ PROJET\ AOUT\ 25/63549/src/Synth.cpp
 CMakeFiles/63549.dir/src/Synth.cpp.obj: CMakeFiles/63549.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\pc\Desktop\DEV4 PROJET AOUT 25\63549\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/63549.dir/src/Synth.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\pc\Desktop\DEV4 PROJET AOUT 25\63549\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/63549.dir/src/Synth.cpp.obj"
 	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/63549.dir/src/Synth.cpp.obj -MF CMakeFiles\63549.dir\src\Synth.cpp.obj.d -o CMakeFiles\63549.dir\src\Synth.cpp.obj -c "C:\Users\pc\Desktop\DEV4 PROJET AOUT 25\63549\src\Synth.cpp"
 
 CMakeFiles/63549.dir/src/Synth.cpp.i: cmake_force
@@ -262,6 +277,7 @@ CMakeFiles/63549.dir/src/Synth.cpp.s: cmake_force
 "CMakeFiles/63549.dir/libraries/imgui/backends/imgui_impl_sdl3.cpp.obj" \
 "CMakeFiles/63549.dir/libraries/imgui/backends/imgui_impl_sdlrenderer3.cpp.obj" \
 "CMakeFiles/63549.dir/src/Filter.cpp.obj" \
+"CMakeFiles/63549.dir/src/AudioEngine.cpp.obj" \
 "CMakeFiles/63549.dir/src/Envelope.cpp.obj" \
 "CMakeFiles/63549.dir/src/Oscillator.cpp.obj" \
 "CMakeFiles/63549.dir/src/Synth.cpp.obj"
@@ -278,6 +294,7 @@ CMakeFiles/63549.dir/src/Synth.cpp.s: cmake_force
 63549.exe: CMakeFiles/63549.dir/libraries/imgui/backends/imgui_impl_sdl3.cpp.obj
 63549.exe: CMakeFiles/63549.dir/libraries/imgui/backends/imgui_impl_sdlrenderer3.cpp.obj
 63549.exe: CMakeFiles/63549.dir/src/Filter.cpp.obj
+63549.exe: CMakeFiles/63549.dir/src/AudioEngine.cpp.obj
 63549.exe: CMakeFiles/63549.dir/src/Envelope.cpp.obj
 63549.exe: CMakeFiles/63549.dir/src/Oscillator.cpp.obj
 63549.exe: CMakeFiles/63549.dir/src/Synth.cpp.obj
@@ -287,7 +304,7 @@ CMakeFiles/63549.dir/src/Synth.cpp.s: cmake_force
 63549.exe: CMakeFiles/63549.dir/linkLibs.rsp
 63549.exe: CMakeFiles/63549.dir/objects1.rsp
 63549.exe: CMakeFiles/63549.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="C:\Users\pc\Desktop\DEV4 PROJET AOUT 25\63549\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_13) "Linking CXX executable 63549.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="C:\Users\pc\Desktop\DEV4 PROJET AOUT 25\63549\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX executable 63549.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\63549.dir\link.txt --verbose=$(VERBOSE)
 	"C:\Program Files\JetBrains\CLion 2025.1.3\bin\cmake\win\x64\bin\cmake.exe" -E copy_if_different "C:/Users/pc/Desktop/DEV4 PROJET AOUT 25/63549/libraries/portaudio/lib/win32/portaudio_x64.dll" "C:/Users/pc/Desktop/DEV4 PROJET AOUT 25/63549/libraries/sdl/lib/win32/sdl3.dll" "C:/Users/pc/Desktop/DEV4 PROJET AOUT 25/63549/cmake-build-debug"
 
