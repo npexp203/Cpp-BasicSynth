@@ -3,7 +3,6 @@
 //
 
 #include "../include/Oscillator.h"
-#include <cmath>
 
 
 Oscillator::Oscillator():

@@ -320,6 +320,30 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+src/Envelope.obj: src/Envelope.cpp.obj
+.PHONY : src/Envelope.obj
+
+# target to build an object file
+src/Envelope.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/src/Envelope.cpp.obj
+.PHONY : src/Envelope.cpp.obj
+
+src/Envelope.i: src/Envelope.cpp.i
+.PHONY : src/Envelope.i
+
+# target to preprocess a source file
+src/Envelope.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/src/Envelope.cpp.i
+.PHONY : src/Envelope.cpp.i
+
+src/Envelope.s: src/Envelope.cpp.s
+.PHONY : src/Envelope.s
+
+# target to generate assembly for a file
+src/Envelope.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/src/Envelope.cpp.s
+.PHONY : src/Envelope.cpp.s
+
 src/Filter.obj: src/Filter.cpp.obj
 .PHONY : src/Filter.obj
 
@@ -425,6 +449,9 @@ help:
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
+	@echo ... src/Envelope.obj
+	@echo ... src/Envelope.i
+	@echo ... src/Envelope.s
 	@echo ... src/Filter.obj
 	@echo ... src/Filter.i
 	@echo ... src/Filter.s

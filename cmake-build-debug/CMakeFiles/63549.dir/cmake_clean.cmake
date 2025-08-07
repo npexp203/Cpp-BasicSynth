@@ -18,6 +18,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/63549.dir/libraries/imgui/imgui_widgets.cpp.obj.d"
   "CMakeFiles/63549.dir/main.cpp.obj"
   "CMakeFiles/63549.dir/main.cpp.obj.d"
+  "CMakeFiles/63549.dir/src/Envelope.cpp.obj"
+  "CMakeFiles/63549.dir/src/Envelope.cpp.obj.d"
   "CMakeFiles/63549.dir/src/Filter.cpp.obj"
   "CMakeFiles/63549.dir/src/Filter.cpp.obj.d"
   "CMakeFiles/63549.dir/src/Oscillator.cpp.obj"
