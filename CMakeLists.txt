@@ -29,7 +29,7 @@ add_executable(63549 main.cpp
         include/Envelope.h
         src/AudioEngine.cpp
         include/AudioEngine.h
-        include/SynthParams.h
+        include/SynthetizerConfig.h
 
 )
 

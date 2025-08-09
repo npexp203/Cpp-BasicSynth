@@ -6,28 +6,29 @@
 #define OSCILLATOR_H
 
 #include <random>
-enum class WaveForm{TRIANGLE,SAW,NOISE};
+enum class WaveformType{TRIANGLE,SAW,NOISE};
 
 class Oscillator {
 public:
     Oscillator();
 
-    WaveForm getWaveform() const;
+    WaveformType getWaveform() const;
     float getFrequency() const;
     float getSampleRate() const ;
 
     void setSampleRate(float sr);
-    void setWaveForm(WaveForm waveform);
+    void setWaveForm(WaveformType waveform);
     void setFrequency(float freq);
 
-    void generateBuffer(float* buffer, int numFrames);
+    void generateBuffer(float* buffer, int numFrames, WaveformType waveform,
+                       float frequency, float sampleRate);
 
 
 
 
 private:
     //no offset frequency move because its on audioEngine class
-    WaveForm waveform;
+    WaveformType waveform;
     float frequency;
     float phase;
     float sampleRate;

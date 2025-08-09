@@ -8,7 +8,7 @@
 Oscillator::Oscillator():
                             frequency(440.0f),
                             sampleRate(44100.0f),
-                            waveform(WaveForm::TRIANGLE),
+                            waveform(WaveformType::TRIANGLE),
                             phase(0.0f),
                             noise_gen(std::random_device{}()),
                             noise_dist(-0.5f,0.5f) {}
@@ -21,10 +21,10 @@ float Oscillator::getSampleRate() const {
     return sampleRate;
 }
 
-WaveForm Oscillator::getWaveform() const {
+WaveformType Oscillator::getWaveform() const {
     return waveform;
 }
-void Oscillator::setWaveForm(WaveForm waveform) {
+void Oscillator::setWaveForm(WaveformType waveform) {
     this->waveform = waveform;
 }
 void Oscillator::setFrequency(float freq) {
@@ -35,7 +35,8 @@ void Oscillator::setSampleRate(float sr) {
 }
 
 
-void Oscillator::generateBuffer(float* buffer, int numFrames) {
+void Oscillator::generateBuffer(float* buffer, int numFrames, WaveformType waveform,
+                       float frequency, float sampleRate) {
     float phaseIncrement = frequency / sampleRate;
 
     for (int i = 0; i < numFrames * 2; i += 2) {
@@ -43,18 +44,18 @@ void Oscillator::generateBuffer(float* buffer, int numFrames) {
 
         switch (waveform) {
 
-            case WaveForm::TRIANGLE:
+            case WaveformType::TRIANGLE:
                 sample = phase < 0.5f
                     ? 4.0f * phase - 1.0f
                     : 3.0f - 4.0f * phase;
                 sample *= 0.5f;
                 break;
 
-            case WaveForm::SAW:
+            case WaveformType::SAW:
                 sample = (2.0f * phase - 1.0f) * 0.5f;
                 break;
 
-            case WaveForm::NOISE:
+            case WaveformType::NOISE:
                 sample = noise_dist(noise_gen);
                 break;
         }
