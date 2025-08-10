@@ -34,8 +34,8 @@ void Oscillator::reset() {
 
 
 void Oscillator::generateBuffer(float* buffer, int numFrames, WaveformType waveform,
-                       float frequency, float sampleRate) {
-    float phaseIncrement = frequency / sampleRate;
+                       float frequency) {
+    float phaseIncrement = frequency / SAMPLE_RATE;
 
     for (int i = 0; i < numFrames * 2; i += 2) {
         float sample = 0.0f;

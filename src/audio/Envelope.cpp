@@ -5,18 +5,14 @@
 #include "../../include/audio/Envelope.h"
 
 #include <algorithm>
+#include <iostream>
 
-void Envelope::setAttackTime(float attackTime, float sampleRate) {
-    attackRate = attackTime > 0.0f ? 1.0f / (attackTime * sampleRate) : 1000.0f;
+void Envelope::setAttackTime(float attackTime) {
+    attackRate = attackTime > 0.0f ? 1.0f / (attackTime * SAMPLE_RATE) : 1000.0f;
 }
 
-
-void Envelope::setSustainLevel(float level) {
-    sustainLevel = std::clamp(level, 0.0f, 1.0f);
-}
-
-void Envelope::setReleaseTime(float releaseTime, float sampleRate) {
-    releaseRate = releaseTime > 0.0f ? 1.0f / (releaseTime * sampleRate) : 1000.0f;
+void Envelope::setReleaseTime(float releaseTime) {
+    releaseRate = releaseTime > 0.0f ? 1.0f / (releaseTime * SAMPLE_RATE) : 1000.0f;
 }
 
 void Envelope::noteOn() {
@@ -36,13 +32,9 @@ void Envelope::processBuffer(float* buffer, int numFrames) {
                 value += attackRate;
                 if (value >= 1.0f) {
                     value = 1.0f;
-                    state = State::SUSTAIN;
                 }
                 break;
 
-            case State::SUSTAIN:
-                value = sustainLevel;
-                break;
 
             case State::RELEASE:
                 value -= releaseRate;

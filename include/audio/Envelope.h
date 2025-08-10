@@ -5,19 +5,18 @@
 #ifndef ENVELOPE_H
 #define ENVELOPE_H
 #pragma once
+#include "SynthetizerConfig.h"
 enum class State {
     IDLE,
     ATTACK,
-    SUSTAIN,
     RELEASE,
 };
 
 class Envelope {
 public:
-    void setAttackTime(float attackTime, float sampleRate);
-    void setDecayTime(float decayTime, float sampleRate);
-    void setSustainLevel(float level);
-    void setReleaseTime(float releaseTime, float sampleRate);
+    void setAttackTime(float attackTime);
+    void setDecayTime(float decayTime);
+    void setReleaseTime(float releaseTime);
 
     void noteOn();
     void noteOff();

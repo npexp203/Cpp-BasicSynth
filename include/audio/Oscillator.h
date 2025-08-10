@@ -18,11 +18,10 @@ public:
     void setFrequency(float freq);
 
     void generateBuffer(float* buffer, int numFrames, WaveformType waveform,
-                       float frequency, float sampleRate);
+                       float frequency);
     void reset();
 
 private:
-    //no offset frequency move because its on audioEngine class
     WaveformType waveform;
     float frequency;
     float phase;

@@ -6,19 +6,15 @@
 int main(int argc, char* argv[]) {
 
     // Create shared parameters
-    std::cout << "salut demarrage" << std::endl;
     auto synthParams = std::make_shared<SynthetizerConfig>();
-    std::cout << "salut parametre" << std::endl;
 
     // Initialize audio engine
     AudioEngine audioEngine(synthParams);
-    std::cout << "salut audioengin" << std::endl;
-
+    // a voir si mettre dans le synthui
     if (!audioEngine.initialize()) {
         std::cerr << "Failed to initialize audio engine" << std::endl;
         return -1;
     }
-    std::cout << "salut ui" << std::endl;
 
     // Initialize UI
     SynthUI synthUI(synthParams);
@@ -26,11 +22,11 @@ int main(int argc, char* argv[]) {
         std::cerr << "Failed to initialize UI" << std::endl;
         return -1;
     }
-    std::cout << "salut callback" << std::endl;
 
+    // A VOIR AUSSI ICI
     // Set up callbacks
-    synthUI.setNoteOnCallback([&audioEngine](float frequency) {
-        audioEngine.noteOn(frequency);
+    synthUI.setNoteOnCallback([&audioEngine](int noteIndex) {
+        audioEngine.noteOn(noteIndex);
     });
 
     synthUI.setNoteOffCallback([&audioEngine]() {

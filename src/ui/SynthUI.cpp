@@ -1,7 +1,3 @@
-//
-// Created by pc on 02-08-25.
-//
-
 #include "../../include/ui/SynthUI.h"
 
 #include <cmath>
@@ -18,10 +14,10 @@ const char* SynthUI::noteNames[13] = {
     "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B", "C"
 };
 
-const char* SynthUI::keyboardKeys = "sedrf gyhuijkl";
+const char* SynthUI::keyboardKeys = "sedrfgyhuijkl";
 
 SynthUI::SynthUI(std::shared_ptr<SynthetizerConfig> synthParams)
-    : window(nullptr), renderer(nullptr),params(synthParams), currentOctave(0) {
+    : window(nullptr), renderer(nullptr), params(synthParams), currentOctave(0) {
     std::fill(keyStates, keyStates + 13, false);
 }
 
@@ -35,14 +31,13 @@ bool SynthUI::initialize() {
         return false;
     }
 
-    window = SDL_CreateWindow("Synthétiseur 4DEV4D", 800, 600,
-                             SDL_WINDOW_RESIZABLE);  // ✅ Retiré SDL_WINDOW_OPENGL
+    window = SDL_CreateWindow("Synth", 800, 600, SDL_WINDOW_RESIZABLE);
     if (!window) {
         std::cerr << "Window creation failed: " << SDL_GetError() << std::endl;
         return false;
     }
 
-    renderer = SDL_CreateRenderer(window, nullptr);  // ✅ Nouveau !
+    renderer = SDL_CreateRenderer(window, nullptr);
     if (!renderer) {
         std::cerr << "Renderer creation failed: " << SDL_GetError() << std::endl;
         return false;
@@ -59,6 +54,7 @@ bool SynthUI::initialize() {
     ImGui_ImplSDL3_InitForSDLRenderer(window, renderer);
     ImGui_ImplSDLRenderer3_Init(renderer);
 
+    isInitialized = true;
     return true;
 }
 
@@ -85,11 +81,14 @@ void SynthUI::render() {
     ImGui_ImplSDLRenderer3_RenderDrawData(ImGui::GetDrawData(), renderer);
     SDL_RenderPresent(renderer);
 }
-void SynthUI::shutdown() {
-    ImGui_ImplSDLRenderer3_Shutdown();
-    ImGui_ImplSDL3_Shutdown();
-    ImGui::DestroyContext();
 
+void SynthUI::shutdown() {
+    if (isInitialized) {
+        ImGui_ImplSDLRenderer3_Shutdown();
+        ImGui_ImplSDL3_Shutdown();
+        ImGui::DestroyContext();
+        isInitialized = false;
+    }
     if (renderer) {
         SDL_DestroyRenderer(renderer);
         renderer = nullptr;
@@ -128,11 +127,8 @@ void SynthUI::handleKeyboard(const SDL_Event& event) {
                 keyStates[i] = isDown;
 
                 if (isDown && !wasDown) {
-                    // Key press
-                    float freq = noteToFrequency(i, currentOctave);
-                    if (noteOnCallback) noteOnCallback(freq);
+                    if (noteOnCallback) noteOnCallback(i);
                 } else if (!isDown && wasDown) {
-                    // Key release
                     if (noteOffCallback) noteOffCallback();
                 }
                 break;
@@ -144,7 +140,6 @@ void SynthUI::handleKeyboard(const SDL_Event& event) {
 float SynthUI::noteToFrequency(int note, int octave) {
     return 220.0f * std::pow(2.0f, (octave + note) / 12.0f);
 }
-
 
 void SynthUI::renderOscillatorControls() {
     if (ImGui::CollapsingHeader("Oscillators", ImGuiTreeNodeFlags_DefaultOpen)) {
@@ -165,7 +160,7 @@ void SynthUI::renderOscillatorControls() {
             params->osc1_freq_offset = osc1_offset;
         }
 
-        // Similar for OSC2 and OSC3...
+        // Oscillator 2
         bool osc2_enabled = params->osc2_enabled.load();
         if (ImGui::Checkbox("Oscillator 2", &osc2_enabled)) {
             params->osc2_enabled = osc2_enabled;
@@ -181,6 +176,7 @@ void SynthUI::renderOscillatorControls() {
             params->osc2_freq_offset = osc2_offset;
         }
 
+        // Oscillator 3
         bool osc3_enabled = params->osc3_enabled.load();
         if (ImGui::Checkbox("Oscillator 3", &osc3_enabled)) {
             params->osc3_enabled = osc3_enabled;
@@ -275,15 +271,13 @@ void SynthUI::renderVirtualKeyboard() {
                 ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.8f, 0.6f, 0.2f, 1.0f));
             }
 
-            if (ImGui::Button(noteNames[i])) {
+            std::string buttonLabel = std::to_string(i);
+
+            if (ImGui::Button(buttonLabel.c_str())) {
                 if (!isPressed) {
-                    float freq = noteToFrequency(i, currentOctave);
-                    if (noteOnCallback) noteOnCallback(freq);
+                    if (noteOnCallback) noteOnCallback(i);
                     keyStates[i] = true;
                 }
-            } else if (isPressed && !ImGui::IsItemActive()) {
-                if (noteOffCallback) noteOffCallback();
-                keyStates[i] = false;
             }
 
             if (isPressed) {
@@ -292,15 +286,14 @@ void SynthUI::renderVirtualKeyboard() {
         }
 
         ImGui::Text("Keyboard mapping: %s", keyboardKeys);
+        ImGui::Text("Notes: 0=C, 1=C#, 2=D, 3=D#, 4=E, 5=F, 6=F#, 7=G, 8=G#, 9=A, 10=A#, 11=B, 12=C");
     }
 }
 
-void SynthUI::setNoteOnCallback(std::function<void(float)> callback) {
+void SynthUI::setNoteOnCallback(std::function<void(int)> callback) {
     noteOnCallback = callback;
 }
 
 void SynthUI::setNoteOffCallback(std::function<void()> callback) {
     noteOffCallback = callback;
 }
-
-

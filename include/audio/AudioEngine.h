@@ -12,11 +12,12 @@
 #include "Oscillator.h"
 #include "Envelope.h"
 #include "Filter.h"
-#include "SynthetizerConfig.h"  // Remplace SynthetizerConfig
+#include "SynthetizerConfig.h"
 
 class AudioEngine {
 
 public:
+    // a verif mettre réf ou quoi
     explicit AudioEngine(std::shared_ptr<SynthetizerConfig> p);
     ~AudioEngine();
 

@@ -20,7 +20,7 @@ constexpr float PI = 3.14159265359f;
 struct SynthetizerConfig {
     // Oscillator enabled
     std::atomic<bool> osc1_enabled{false};
-    std::atomic<bool> osc2_enabled{false};é
+    std::atomic<bool> osc2_enabled{false};
     std::atomic<bool> osc3_enabled{false};
 
     //(0= Triangle 1= Saw 2= Noise)

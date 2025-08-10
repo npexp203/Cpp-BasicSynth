@@ -12,7 +12,6 @@ AudioEngine::~AudioEngine() {
     shutdown();
 }
 
-// ===== MÉTHODES PORTAUDIO (nouvelles) =====
 bool AudioEngine::initialize() {
     PaError err = Pa_Initialize();
     if (err != paNoError) {
@@ -32,8 +31,15 @@ bool AudioEngine::initialize() {
     outputParameters.suggestedLatency = Pa_GetDeviceInfo(outputParameters.device)->defaultLowOutputLatency;
     outputParameters.hostApiSpecificStreamInfo = nullptr;
 
-    err = Pa_OpenStream(&stream, nullptr, &outputParameters, SAMPLE_RATE,
-                       BUFFER_SIZE, paClipOff, audioCallback, this);
+    err = Pa_OpenStream(
+        &stream,
+        nullptr,
+        &outputParameters,
+        SAMPLE_RATE,
+        BUFFER_SIZE,
+        paClipOff,
+        audioCallback,
+        this);
 
     if (err != paNoError) {
         std::cerr << "PortAudio open failed: " << Pa_GetErrorText(err) << std::endl;
@@ -76,22 +82,22 @@ int AudioEngine::audioCallback(const void* inputBuffer, void* outputBuffer,
                               void* userData) {
     AudioEngine* engine = static_cast<AudioEngine*>(userData);
     float* output = static_cast<float*>(outputBuffer);
+
     engine->processAudio(output, framesPerBuffer);
     return paContinue;
 }
 
 void AudioEngine::processAudio(float* outputBuffer, int numFrames) {
-    // Clear mix buffer
-    std::fill(mixBuffer.begin(), mixBuffer.end(), 0.0f);
 
     float noteFreq = params->note_frequency.load();
+
 
     if (params->osc1_enabled.load()) {
         float freq = noteFreq + params->osc1_freq_offset.load();
         oscillators[0].generateBuffer(
             osc1Buffer.data(), numFrames,
             static_cast<WaveformType>(params->osc1_waveform.load()),
-            freq, SAMPLE_RATE
+            freq
         );
         for (int i = 0; i < numFrames * 2; ++i) {
             mixBuffer[i] += osc1Buffer[i];
@@ -103,7 +109,7 @@ void AudioEngine::processAudio(float* outputBuffer, int numFrames) {
         oscillators[1].generateBuffer(
             osc2Buffer.data(), numFrames,
             static_cast<WaveformType>(params->osc2_waveform.load()),
-            freq, SAMPLE_RATE
+            freq
         );
         for (int i = 0; i < numFrames * 2; ++i) {
             mixBuffer[i] += osc2Buffer[i];
@@ -115,15 +121,15 @@ void AudioEngine::processAudio(float* outputBuffer, int numFrames) {
         oscillators[2].generateBuffer(
             osc3Buffer.data(), numFrames,
             static_cast<WaveformType>(params->osc3_waveform.load()),
-            freq, SAMPLE_RATE
+            freq
         );
         for (int i = 0; i < numFrames * 2; ++i) {
             mixBuffer[i] += osc3Buffer[i];
         }
     }
 
-    envelope.setAttackTime(params->attack_time.load(), SAMPLE_RATE);
-    envelope.setReleaseTime(params->release_time.load(), SAMPLE_RATE);
+    envelope.setAttackTime(params->attack_time.load());
+    envelope.setReleaseTime(params->release_time.load());
     envelope.processBuffer(mixBuffer.data(), numFrames);
 
     filter.processBuffer(
@@ -141,12 +147,13 @@ void AudioEngine::processAudio(float* outputBuffer, int numFrames) {
 }
 
 void AudioEngine::noteOn(int noteNumber) {
-    float baseFreq = 220.0f; // A3
+    float baseFreq = 220.0f;
     int octave = params->octave.load();
     float frequency = baseFreq * std::pow(2.0f, (octave + noteNumber / 12.0f));
 
     params->note_frequency.store(frequency);
     params->note_on.store(true);
+
     envelope.noteOn();
 }
 
