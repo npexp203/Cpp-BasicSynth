@@ -25,7 +25,7 @@ private:
     SDL_Window* window;
     SDL_Renderer* renderer;
     std::shared_ptr<SynthetizerConfig> params;
-
+//s
     int currentOctave;
     bool keyStates[13];
     bool isInitialized = false;
