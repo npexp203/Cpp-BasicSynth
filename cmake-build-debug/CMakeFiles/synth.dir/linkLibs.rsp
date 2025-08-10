@@ -1,0 +1,1 @@
+ "C:/Users/pc/Desktop/DEV4 PROJET AOUT 25/63549/libraries/portaudio/lib/win32/portaudio_x64.dll" "C:/Users/pc/Desktop/DEV4 PROJET AOUT 25/63549/libraries/sdl/lib/win32/sdl3.dll" -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 

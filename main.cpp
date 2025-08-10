@@ -1,25 +1,58 @@
+#include "include/audio/AudioEngine.h"
+#include "include/ui/SynthUI.h"
+#include <memory>
 #include <iostream>
 
-// TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-int main() {
-    // TIP Press <shortcut actionId="RenameElement"/> when your caret is at the
-    // <b>lang</b> variable name to see how CLion can help you rename it.
-    auto lang = "C++";
-    std::cout << "Hello and welcome to " << lang << "!\n";
+int main(int argc, char* argv[]) {
 
-    for (int i = 1; i <= 5; i++) {
-        // TIP Press <shortcut actionId="Debug"/> to start debugging your code.
-        // We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/>
-        // breakpoint for you, but you can always add more by pressing
-        // <shortcut actionId="ToggleLineBreakpoint"/>.
-        std::cout << "i = " << i << std::endl;
+    // Create shared parameters
+    std::cout << "salut demarrage" << std::endl;
+    auto synthParams = std::make_shared<SynthetizerConfig>();
+    std::cout << "salut parametre" << std::endl;
+
+    // Initialize audio engine
+    AudioEngine audioEngine(synthParams);
+    std::cout << "salut audioengin" << std::endl;
+
+    if (!audioEngine.initialize()) {
+        std::cerr << "Failed to initialize audio engine" << std::endl;
+        return -1;
     }
+    std::cout << "salut ui" << std::endl;
+
+    // Initialize UI
+    SynthUI synthUI(synthParams);
+    if (!synthUI.initialize()) {
+        std::cerr << "Failed to initialize UI" << std::endl;
+        return -1;
+    }
+    std::cout << "salut callback" << std::endl;
+
+    // Set up callbacks
+    synthUI.setNoteOnCallback([&audioEngine](float frequency) {
+        audioEngine.noteOn(frequency);
+    });
+
+    synthUI.setNoteOffCallback([&audioEngine]() {
+        audioEngine.noteOff();
+    });
+
+    if (!audioEngine.start()) {
+        std::cerr << "Failed to start audio engine" << std::endl;
+        return -1;
+    }
+
+    // Main loop
+    bool running = true;
+    while (running) {
+        running = synthUI.handleEvents();
+        synthUI.render();
+    }
+
+    // Cleanup
+    audioEngine.stop();
+    synthUI.shutdown();
+    audioEngine.shutdown();
 
     return 0;
 }
-
-// TIP See CLion help at <a
-// href="https://www.jetbrains.com/help/clion/">jetbrains.com/help/clion/</a>.
-//  Also, you can try interactive lessons for CLion by selecting
-//  'Help | Learn IDE Features' from the main menu.

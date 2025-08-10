@@ -116,24 +116,24 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named 63549
+# Target rules for targets named synth
 
 # Build rule for target.
-63549: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 63549
-.PHONY : 63549
+synth: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 synth
+.PHONY : synth
 
 # fast build rule for target.
-63549/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/build
-.PHONY : 63549/fast
+synth/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\synth.dir\build.make CMakeFiles/synth.dir/build
+.PHONY : synth/fast
 
 libraries/imgui/backends/imgui_impl_sdl3.obj: libraries/imgui/backends/imgui_impl_sdl3.cpp.obj
 .PHONY : libraries/imgui/backends/imgui_impl_sdl3.obj
 
 # target to build an object file
 libraries/imgui/backends/imgui_impl_sdl3.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/libraries/imgui/backends/imgui_impl_sdl3.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\synth.dir\build.make CMakeFiles/synth.dir/libraries/imgui/backends/imgui_impl_sdl3.cpp.obj
 .PHONY : libraries/imgui/backends/imgui_impl_sdl3.cpp.obj
 
 libraries/imgui/backends/imgui_impl_sdl3.i: libraries/imgui/backends/imgui_impl_sdl3.cpp.i
@@ -141,7 +141,7 @@ libraries/imgui/backends/imgui_impl_sdl3.i: libraries/imgui/backends/imgui_impl_
 
 # target to preprocess a source file
 libraries/imgui/backends/imgui_impl_sdl3.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/libraries/imgui/backends/imgui_impl_sdl3.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\synth.dir\build.make CMakeFiles/synth.dir/libraries/imgui/backends/imgui_impl_sdl3.cpp.i
 .PHONY : libraries/imgui/backends/imgui_impl_sdl3.cpp.i
 
 libraries/imgui/backends/imgui_impl_sdl3.s: libraries/imgui/backends/imgui_impl_sdl3.cpp.s
@@ -149,7 +149,7 @@ libraries/imgui/backends/imgui_impl_sdl3.s: libraries/imgui/backends/imgui_impl_
 
 # target to generate assembly for a file
 libraries/imgui/backends/imgui_impl_sdl3.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/libraries/imgui/backends/imgui_impl_sdl3.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\synth.dir\build.make CMakeFiles/synth.dir/libraries/imgui/backends/imgui_impl_sdl3.cpp.s
 .PHONY : libraries/imgui/backends/imgui_impl_sdl3.cpp.s
 
 libraries/imgui/backends/imgui_impl_sdlrenderer3.obj: libraries/imgui/backends/imgui_impl_sdlrenderer3.cpp.obj
@@ -157,7 +157,7 @@ libraries/imgui/backends/imgui_impl_sdlrenderer3.obj: libraries/imgui/backends/i
 
 # target to build an object file
 libraries/imgui/backends/imgui_impl_sdlrenderer3.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/libraries/imgui/backends/imgui_impl_sdlrenderer3.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\synth.dir\build.make CMakeFiles/synth.dir/libraries/imgui/backends/imgui_impl_sdlrenderer3.cpp.obj
 .PHONY : libraries/imgui/backends/imgui_impl_sdlrenderer3.cpp.obj
 
 libraries/imgui/backends/imgui_impl_sdlrenderer3.i: libraries/imgui/backends/imgui_impl_sdlrenderer3.cpp.i
@@ -165,7 +165,7 @@ libraries/imgui/backends/imgui_impl_sdlrenderer3.i: libraries/imgui/backends/img
 
 # target to preprocess a source file
 libraries/imgui/backends/imgui_impl_sdlrenderer3.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/libraries/imgui/backends/imgui_impl_sdlrenderer3.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\synth.dir\build.make CMakeFiles/synth.dir/libraries/imgui/backends/imgui_impl_sdlrenderer3.cpp.i
 .PHONY : libraries/imgui/backends/imgui_impl_sdlrenderer3.cpp.i
 
 libraries/imgui/backends/imgui_impl_sdlrenderer3.s: libraries/imgui/backends/imgui_impl_sdlrenderer3.cpp.s
@@ -173,7 +173,7 @@ libraries/imgui/backends/imgui_impl_sdlrenderer3.s: libraries/imgui/backends/img
 
 # target to generate assembly for a file
 libraries/imgui/backends/imgui_impl_sdlrenderer3.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/libraries/imgui/backends/imgui_impl_sdlrenderer3.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\synth.dir\build.make CMakeFiles/synth.dir/libraries/imgui/backends/imgui_impl_sdlrenderer3.cpp.s
 .PHONY : libraries/imgui/backends/imgui_impl_sdlrenderer3.cpp.s
 
 libraries/imgui/imgui.obj: libraries/imgui/imgui.cpp.obj
@@ -181,7 +181,7 @@ libraries/imgui/imgui.obj: libraries/imgui/imgui.cpp.obj
 
 # target to build an object file
 libraries/imgui/imgui.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/libraries/imgui/imgui.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\synth.dir\build.make CMakeFiles/synth.dir/libraries/imgui/imgui.cpp.obj
 .PHONY : libraries/imgui/imgui.cpp.obj
 
 libraries/imgui/imgui.i: libraries/imgui/imgui.cpp.i
@@ -189,7 +189,7 @@ libraries/imgui/imgui.i: libraries/imgui/imgui.cpp.i
 
 # target to preprocess a source file
 libraries/imgui/imgui.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/libraries/imgui/imgui.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\synth.dir\build.make CMakeFiles/synth.dir/libraries/imgui/imgui.cpp.i
 .PHONY : libraries/imgui/imgui.cpp.i
 
 libraries/imgui/imgui.s: libraries/imgui/imgui.cpp.s
@@ -197,7 +197,7 @@ libraries/imgui/imgui.s: libraries/imgui/imgui.cpp.s
 
 # target to generate assembly for a file
 libraries/imgui/imgui.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/libraries/imgui/imgui.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\synth.dir\build.make CMakeFiles/synth.dir/libraries/imgui/imgui.cpp.s
 .PHONY : libraries/imgui/imgui.cpp.s
 
 libraries/imgui/imgui_demo.obj: libraries/imgui/imgui_demo.cpp.obj
@@ -205,7 +205,7 @@ libraries/imgui/imgui_demo.obj: libraries/imgui/imgui_demo.cpp.obj
 
 # target to build an object file
 libraries/imgui/imgui_demo.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/libraries/imgui/imgui_demo.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\synth.dir\build.make CMakeFiles/synth.dir/libraries/imgui/imgui_demo.cpp.obj
 .PHONY : libraries/imgui/imgui_demo.cpp.obj
 
 libraries/imgui/imgui_demo.i: libraries/imgui/imgui_demo.cpp.i
@@ -213,7 +213,7 @@ libraries/imgui/imgui_demo.i: libraries/imgui/imgui_demo.cpp.i
 
 # target to preprocess a source file
 libraries/imgui/imgui_demo.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/libraries/imgui/imgui_demo.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\synth.dir\build.make CMakeFiles/synth.dir/libraries/imgui/imgui_demo.cpp.i
 .PHONY : libraries/imgui/imgui_demo.cpp.i
 
 libraries/imgui/imgui_demo.s: libraries/imgui/imgui_demo.cpp.s
@@ -221,7 +221,7 @@ libraries/imgui/imgui_demo.s: libraries/imgui/imgui_demo.cpp.s
 
 # target to generate assembly for a file
 libraries/imgui/imgui_demo.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/libraries/imgui/imgui_demo.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\synth.dir\build.make CMakeFiles/synth.dir/libraries/imgui/imgui_demo.cpp.s
 .PHONY : libraries/imgui/imgui_demo.cpp.s
 
 libraries/imgui/imgui_draw.obj: libraries/imgui/imgui_draw.cpp.obj
@@ -229,7 +229,7 @@ libraries/imgui/imgui_draw.obj: libraries/imgui/imgui_draw.cpp.obj
 
 # target to build an object file
 libraries/imgui/imgui_draw.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/libraries/imgui/imgui_draw.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\synth.dir\build.make CMakeFiles/synth.dir/libraries/imgui/imgui_draw.cpp.obj
 .PHONY : libraries/imgui/imgui_draw.cpp.obj
 
 libraries/imgui/imgui_draw.i: libraries/imgui/imgui_draw.cpp.i
@@ -237,7 +237,7 @@ libraries/imgui/imgui_draw.i: libraries/imgui/imgui_draw.cpp.i
 
 # target to preprocess a source file
 libraries/imgui/imgui_draw.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/libraries/imgui/imgui_draw.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\synth.dir\build.make CMakeFiles/synth.dir/libraries/imgui/imgui_draw.cpp.i
 .PHONY : libraries/imgui/imgui_draw.cpp.i
 
 libraries/imgui/imgui_draw.s: libraries/imgui/imgui_draw.cpp.s
@@ -245,7 +245,7 @@ libraries/imgui/imgui_draw.s: libraries/imgui/imgui_draw.cpp.s
 
 # target to generate assembly for a file
 libraries/imgui/imgui_draw.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/libraries/imgui/imgui_draw.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\synth.dir\build.make CMakeFiles/synth.dir/libraries/imgui/imgui_draw.cpp.s
 .PHONY : libraries/imgui/imgui_draw.cpp.s
 
 libraries/imgui/imgui_tables.obj: libraries/imgui/imgui_tables.cpp.obj
@@ -253,7 +253,7 @@ libraries/imgui/imgui_tables.obj: libraries/imgui/imgui_tables.cpp.obj
 
 # target to build an object file
 libraries/imgui/imgui_tables.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/libraries/imgui/imgui_tables.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\synth.dir\build.make CMakeFiles/synth.dir/libraries/imgui/imgui_tables.cpp.obj
 .PHONY : libraries/imgui/imgui_tables.cpp.obj
 
 libraries/imgui/imgui_tables.i: libraries/imgui/imgui_tables.cpp.i
@@ -261,7 +261,7 @@ libraries/imgui/imgui_tables.i: libraries/imgui/imgui_tables.cpp.i
 
 # target to preprocess a source file
 libraries/imgui/imgui_tables.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/libraries/imgui/imgui_tables.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\synth.dir\build.make CMakeFiles/synth.dir/libraries/imgui/imgui_tables.cpp.i
 .PHONY : libraries/imgui/imgui_tables.cpp.i
 
 libraries/imgui/imgui_tables.s: libraries/imgui/imgui_tables.cpp.s
@@ -269,7 +269,7 @@ libraries/imgui/imgui_tables.s: libraries/imgui/imgui_tables.cpp.s
 
 # target to generate assembly for a file
 libraries/imgui/imgui_tables.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/libraries/imgui/imgui_tables.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\synth.dir\build.make CMakeFiles/synth.dir/libraries/imgui/imgui_tables.cpp.s
 .PHONY : libraries/imgui/imgui_tables.cpp.s
 
 libraries/imgui/imgui_widgets.obj: libraries/imgui/imgui_widgets.cpp.obj
@@ -277,7 +277,7 @@ libraries/imgui/imgui_widgets.obj: libraries/imgui/imgui_widgets.cpp.obj
 
 # target to build an object file
 libraries/imgui/imgui_widgets.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/libraries/imgui/imgui_widgets.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\synth.dir\build.make CMakeFiles/synth.dir/libraries/imgui/imgui_widgets.cpp.obj
 .PHONY : libraries/imgui/imgui_widgets.cpp.obj
 
 libraries/imgui/imgui_widgets.i: libraries/imgui/imgui_widgets.cpp.i
@@ -285,7 +285,7 @@ libraries/imgui/imgui_widgets.i: libraries/imgui/imgui_widgets.cpp.i
 
 # target to preprocess a source file
 libraries/imgui/imgui_widgets.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/libraries/imgui/imgui_widgets.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\synth.dir\build.make CMakeFiles/synth.dir/libraries/imgui/imgui_widgets.cpp.i
 .PHONY : libraries/imgui/imgui_widgets.cpp.i
 
 libraries/imgui/imgui_widgets.s: libraries/imgui/imgui_widgets.cpp.s
@@ -293,7 +293,7 @@ libraries/imgui/imgui_widgets.s: libraries/imgui/imgui_widgets.cpp.s
 
 # target to generate assembly for a file
 libraries/imgui/imgui_widgets.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/libraries/imgui/imgui_widgets.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\synth.dir\build.make CMakeFiles/synth.dir/libraries/imgui/imgui_widgets.cpp.s
 .PHONY : libraries/imgui/imgui_widgets.cpp.s
 
 main.obj: main.cpp.obj
@@ -301,7 +301,7 @@ main.obj: main.cpp.obj
 
 # target to build an object file
 main.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/main.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\synth.dir\build.make CMakeFiles/synth.dir/main.cpp.obj
 .PHONY : main.cpp.obj
 
 main.i: main.cpp.i
@@ -309,7 +309,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\synth.dir\build.make CMakeFiles/synth.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -317,128 +317,128 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\synth.dir\build.make CMakeFiles/synth.dir/main.cpp.s
 .PHONY : main.cpp.s
 
-src/AudioEngine.obj: src/AudioEngine.cpp.obj
-.PHONY : src/AudioEngine.obj
+src/audio/AudioEngine.obj: src/audio/AudioEngine.cpp.obj
+.PHONY : src/audio/AudioEngine.obj
 
 # target to build an object file
-src/AudioEngine.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/src/AudioEngine.cpp.obj
-.PHONY : src/AudioEngine.cpp.obj
+src/audio/AudioEngine.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\synth.dir\build.make CMakeFiles/synth.dir/src/audio/AudioEngine.cpp.obj
+.PHONY : src/audio/AudioEngine.cpp.obj
 
-src/AudioEngine.i: src/AudioEngine.cpp.i
-.PHONY : src/AudioEngine.i
+src/audio/AudioEngine.i: src/audio/AudioEngine.cpp.i
+.PHONY : src/audio/AudioEngine.i
 
 # target to preprocess a source file
-src/AudioEngine.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/src/AudioEngine.cpp.i
-.PHONY : src/AudioEngine.cpp.i
+src/audio/AudioEngine.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\synth.dir\build.make CMakeFiles/synth.dir/src/audio/AudioEngine.cpp.i
+.PHONY : src/audio/AudioEngine.cpp.i
 
-src/AudioEngine.s: src/AudioEngine.cpp.s
-.PHONY : src/AudioEngine.s
+src/audio/AudioEngine.s: src/audio/AudioEngine.cpp.s
+.PHONY : src/audio/AudioEngine.s
 
 # target to generate assembly for a file
-src/AudioEngine.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/src/AudioEngine.cpp.s
-.PHONY : src/AudioEngine.cpp.s
+src/audio/AudioEngine.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\synth.dir\build.make CMakeFiles/synth.dir/src/audio/AudioEngine.cpp.s
+.PHONY : src/audio/AudioEngine.cpp.s
 
-src/Envelope.obj: src/Envelope.cpp.obj
-.PHONY : src/Envelope.obj
+src/audio/Envelope.obj: src/audio/Envelope.cpp.obj
+.PHONY : src/audio/Envelope.obj
 
 # target to build an object file
-src/Envelope.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/src/Envelope.cpp.obj
-.PHONY : src/Envelope.cpp.obj
+src/audio/Envelope.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\synth.dir\build.make CMakeFiles/synth.dir/src/audio/Envelope.cpp.obj
+.PHONY : src/audio/Envelope.cpp.obj
 
-src/Envelope.i: src/Envelope.cpp.i
-.PHONY : src/Envelope.i
+src/audio/Envelope.i: src/audio/Envelope.cpp.i
+.PHONY : src/audio/Envelope.i
 
 # target to preprocess a source file
-src/Envelope.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/src/Envelope.cpp.i
-.PHONY : src/Envelope.cpp.i
+src/audio/Envelope.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\synth.dir\build.make CMakeFiles/synth.dir/src/audio/Envelope.cpp.i
+.PHONY : src/audio/Envelope.cpp.i
 
-src/Envelope.s: src/Envelope.cpp.s
-.PHONY : src/Envelope.s
+src/audio/Envelope.s: src/audio/Envelope.cpp.s
+.PHONY : src/audio/Envelope.s
 
 # target to generate assembly for a file
-src/Envelope.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/src/Envelope.cpp.s
-.PHONY : src/Envelope.cpp.s
+src/audio/Envelope.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\synth.dir\build.make CMakeFiles/synth.dir/src/audio/Envelope.cpp.s
+.PHONY : src/audio/Envelope.cpp.s
 
-src/Filter.obj: src/Filter.cpp.obj
-.PHONY : src/Filter.obj
+src/audio/Filter.obj: src/audio/Filter.cpp.obj
+.PHONY : src/audio/Filter.obj
 
 # target to build an object file
-src/Filter.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/src/Filter.cpp.obj
-.PHONY : src/Filter.cpp.obj
+src/audio/Filter.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\synth.dir\build.make CMakeFiles/synth.dir/src/audio/Filter.cpp.obj
+.PHONY : src/audio/Filter.cpp.obj
 
-src/Filter.i: src/Filter.cpp.i
-.PHONY : src/Filter.i
+src/audio/Filter.i: src/audio/Filter.cpp.i
+.PHONY : src/audio/Filter.i
 
 # target to preprocess a source file
-src/Filter.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/src/Filter.cpp.i
-.PHONY : src/Filter.cpp.i
+src/audio/Filter.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\synth.dir\build.make CMakeFiles/synth.dir/src/audio/Filter.cpp.i
+.PHONY : src/audio/Filter.cpp.i
 
-src/Filter.s: src/Filter.cpp.s
-.PHONY : src/Filter.s
+src/audio/Filter.s: src/audio/Filter.cpp.s
+.PHONY : src/audio/Filter.s
 
 # target to generate assembly for a file
-src/Filter.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/src/Filter.cpp.s
-.PHONY : src/Filter.cpp.s
+src/audio/Filter.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\synth.dir\build.make CMakeFiles/synth.dir/src/audio/Filter.cpp.s
+.PHONY : src/audio/Filter.cpp.s
 
-src/Oscillator.obj: src/Oscillator.cpp.obj
-.PHONY : src/Oscillator.obj
+src/audio/Oscillator.obj: src/audio/Oscillator.cpp.obj
+.PHONY : src/audio/Oscillator.obj
 
 # target to build an object file
-src/Oscillator.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/src/Oscillator.cpp.obj
-.PHONY : src/Oscillator.cpp.obj
+src/audio/Oscillator.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\synth.dir\build.make CMakeFiles/synth.dir/src/audio/Oscillator.cpp.obj
+.PHONY : src/audio/Oscillator.cpp.obj
 
-src/Oscillator.i: src/Oscillator.cpp.i
-.PHONY : src/Oscillator.i
+src/audio/Oscillator.i: src/audio/Oscillator.cpp.i
+.PHONY : src/audio/Oscillator.i
 
 # target to preprocess a source file
-src/Oscillator.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/src/Oscillator.cpp.i
-.PHONY : src/Oscillator.cpp.i
+src/audio/Oscillator.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\synth.dir\build.make CMakeFiles/synth.dir/src/audio/Oscillator.cpp.i
+.PHONY : src/audio/Oscillator.cpp.i
 
-src/Oscillator.s: src/Oscillator.cpp.s
-.PHONY : src/Oscillator.s
+src/audio/Oscillator.s: src/audio/Oscillator.cpp.s
+.PHONY : src/audio/Oscillator.s
 
 # target to generate assembly for a file
-src/Oscillator.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/src/Oscillator.cpp.s
-.PHONY : src/Oscillator.cpp.s
+src/audio/Oscillator.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\synth.dir\build.make CMakeFiles/synth.dir/src/audio/Oscillator.cpp.s
+.PHONY : src/audio/Oscillator.cpp.s
 
-src/Synth.obj: src/Synth.cpp.obj
-.PHONY : src/Synth.obj
+src/ui/SynthUI.obj: src/ui/SynthUI.cpp.obj
+.PHONY : src/ui/SynthUI.obj
 
 # target to build an object file
-src/Synth.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/src/Synth.cpp.obj
-.PHONY : src/Synth.cpp.obj
+src/ui/SynthUI.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\synth.dir\build.make CMakeFiles/synth.dir/src/ui/SynthUI.cpp.obj
+.PHONY : src/ui/SynthUI.cpp.obj
 
-src/Synth.i: src/Synth.cpp.i
-.PHONY : src/Synth.i
+src/ui/SynthUI.i: src/ui/SynthUI.cpp.i
+.PHONY : src/ui/SynthUI.i
 
 # target to preprocess a source file
-src/Synth.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/src/Synth.cpp.i
-.PHONY : src/Synth.cpp.i
+src/ui/SynthUI.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\synth.dir\build.make CMakeFiles/synth.dir/src/ui/SynthUI.cpp.i
+.PHONY : src/ui/SynthUI.cpp.i
 
-src/Synth.s: src/Synth.cpp.s
-.PHONY : src/Synth.s
+src/ui/SynthUI.s: src/ui/SynthUI.cpp.s
+.PHONY : src/ui/SynthUI.s
 
 # target to generate assembly for a file
-src/Synth.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/src/Synth.cpp.s
-.PHONY : src/Synth.cpp.s
+src/ui/SynthUI.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\synth.dir\build.make CMakeFiles/synth.dir/src/ui/SynthUI.cpp.s
+.PHONY : src/ui/SynthUI.cpp.s
 
 # Help Target
 help:
@@ -448,7 +448,7 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... 63549
+	@echo ... synth
 	@echo ... libraries/imgui/backends/imgui_impl_sdl3.obj
 	@echo ... libraries/imgui/backends/imgui_impl_sdl3.i
 	@echo ... libraries/imgui/backends/imgui_impl_sdl3.s
@@ -473,21 +473,21 @@ help:
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
-	@echo ... src/AudioEngine.obj
-	@echo ... src/AudioEngine.i
-	@echo ... src/AudioEngine.s
-	@echo ... src/Envelope.obj
-	@echo ... src/Envelope.i
-	@echo ... src/Envelope.s
-	@echo ... src/Filter.obj
-	@echo ... src/Filter.i
-	@echo ... src/Filter.s
-	@echo ... src/Oscillator.obj
-	@echo ... src/Oscillator.i
-	@echo ... src/Oscillator.s
-	@echo ... src/Synth.obj
-	@echo ... src/Synth.i
-	@echo ... src/Synth.s
+	@echo ... src/audio/AudioEngine.obj
+	@echo ... src/audio/AudioEngine.i
+	@echo ... src/audio/AudioEngine.s
+	@echo ... src/audio/Envelope.obj
+	@echo ... src/audio/Envelope.i
+	@echo ... src/audio/Envelope.s
+	@echo ... src/audio/Filter.obj
+	@echo ... src/audio/Filter.i
+	@echo ... src/audio/Filter.s
+	@echo ... src/audio/Oscillator.obj
+	@echo ... src/audio/Oscillator.i
+	@echo ... src/audio/Oscillator.s
+	@echo ... src/ui/SynthUI.obj
+	@echo ... src/ui/SynthUI.i
+	@echo ... src/ui/SynthUI.s
 .PHONY : help
 
 

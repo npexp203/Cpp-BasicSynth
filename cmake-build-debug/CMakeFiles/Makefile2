@@ -62,11 +62,11 @@ CMAKE_BINARY_DIR = "C:\Users\pc\Desktop\DEV4 PROJET AOUT 25\63549\cmake-build-de
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/63549.dir/all
+all: CMakeFiles/synth.dir/all
 .PHONY : all
 
 # The main recursive "codegen" target.
-codegen: CMakeFiles/63549.dir/codegen
+codegen: CMakeFiles/synth.dir/codegen
 .PHONY : codegen
 
 # The main recursive "preinstall" target.
@@ -74,40 +74,40 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/63549.dir/clean
+clean: CMakeFiles/synth.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/63549.dir
+# Target rules for target CMakeFiles/synth.dir
 
 # All Build rule for target.
-CMakeFiles/63549.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\pc\Desktop\DEV4 PROJET AOUT 25\63549\cmake-build-debug\CMakeFiles" --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14 "Built target 63549"
-.PHONY : CMakeFiles/63549.dir/all
+CMakeFiles/synth.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\synth.dir\build.make CMakeFiles/synth.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\synth.dir\build.make CMakeFiles/synth.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\pc\Desktop\DEV4 PROJET AOUT 25\63549\cmake-build-debug\CMakeFiles" --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14 "Built target synth"
+.PHONY : CMakeFiles/synth.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/63549.dir/rule: cmake_check_build_system
+CMakeFiles/synth.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\pc\Desktop\DEV4 PROJET AOUT 25\63549\cmake-build-debug\CMakeFiles" 14
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/63549.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/synth.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\pc\Desktop\DEV4 PROJET AOUT 25\63549\cmake-build-debug\CMakeFiles" 0
-.PHONY : CMakeFiles/63549.dir/rule
+.PHONY : CMakeFiles/synth.dir/rule
 
 # Convenience name for target.
-63549: CMakeFiles/63549.dir/rule
-.PHONY : 63549
+synth: CMakeFiles/synth.dir/rule
+.PHONY : synth
 
 # codegen rule for target.
-CMakeFiles/63549.dir/codegen:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\pc\Desktop\DEV4 PROJET AOUT 25\63549\cmake-build-debug\CMakeFiles" --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14 "Finished codegen for target 63549"
-.PHONY : CMakeFiles/63549.dir/codegen
+CMakeFiles/synth.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\synth.dir\build.make CMakeFiles/synth.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\pc\Desktop\DEV4 PROJET AOUT 25\63549\cmake-build-debug\CMakeFiles" --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14 "Finished codegen for target synth"
+.PHONY : CMakeFiles/synth.dir/codegen
 
 # clean rule for target.
-CMakeFiles/63549.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\63549.dir\build.make CMakeFiles/63549.dir/clean
-.PHONY : CMakeFiles/63549.dir/clean
+CMakeFiles/synth.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\synth.dir\build.make CMakeFiles/synth.dir/clean
+.PHONY : CMakeFiles/synth.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.
