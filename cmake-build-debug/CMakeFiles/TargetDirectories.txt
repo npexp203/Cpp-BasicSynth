@@ -1,3 +1,0 @@
-C:/Users/pc/Desktop/dev4/63549/cmake-build-debug/CMakeFiles/synth.dir
-C:/Users/pc/Desktop/dev4/63549/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/pc/Desktop/dev4/63549/cmake-build-debug/CMakeFiles/rebuild_cache.dir
