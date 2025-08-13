@@ -10,9 +10,7 @@
 
 enum class WaveformType{TRIANGLE,SAW,NOISE};
 constexpr int SAMPLE_RATE = 44100;
-constexpr int BUFFER_SIZE = 256;
-constexpr int CHANNELS = 2;
-constexpr float PI = 3.14159265359f;
+constexpr int FRAMES_PER_BUFFER = 256;
 
 
 
@@ -38,14 +36,15 @@ struct SynthetizerConfig {
     std::atomic<float> release_time{0.5f};
 
     // LFO filter parameters
-    std::atomic<float> filter_cutoff{10000.0f};  // Hz
-    std::atomic<float> filter_resonance{0.0f}; // 0,0 - 0,99
+    std::atomic<float> filter_cutoff{10000.0f};
+    std::atomic<float> filter_resonance{0.0f};
     std::atomic<float> filter_auto_amount{0.0f};
     std::atomic<float> filter_auto_freq{5.0f};
 
     std::atomic<float> volume{0.5f};
     std::atomic<int> octave{0};
 
+    std::atomic<int> noteNumber { -1};
     std::atomic<bool> note_on{false};
     std::atomic<float> note_frequency{440.0f};
 };

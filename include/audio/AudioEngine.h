@@ -17,13 +17,10 @@
 class AudioEngine {
 
 public:
-    // a verif mettre réf ou quoi
-    explicit AudioEngine(std::shared_ptr<SynthetizerConfig> p);
+     AudioEngine(std::shared_ptr<SynthetizerConfig> p);
     ~AudioEngine();
 
-    bool initialize();
-    bool start();
-    void stop();
+    void initialize();
     void shutdown();
 
     void processAudio(float* outputBuffer, int numFrames);
@@ -38,10 +35,10 @@ private:
     Filter filter;
     std::shared_ptr<SynthetizerConfig> params;
 
-    std::array<float, BUFFER_SIZE * 2> osc1Buffer;
-    std::array<float, BUFFER_SIZE * 2> osc2Buffer;
-    std::array<float, BUFFER_SIZE * 2> osc3Buffer;
-    std::array<float, BUFFER_SIZE * 2> mixBuffer;
+    std::array<float, FRAMES_PER_BUFFER * 2> osc1Buffer;
+    std::array<float, FRAMES_PER_BUFFER * 2> osc2Buffer;
+    std::array<float, FRAMES_PER_BUFFER * 2> osc3Buffer;
+    std::array<float, FRAMES_PER_BUFFER * 2> mixBuffer;
 
     static int audioCallback(const void* inputBuffer, void* outputBuffer,
                            unsigned long framesPerBuffer,

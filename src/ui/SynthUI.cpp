@@ -5,19 +5,12 @@
 #include <iostream>
 #include "imgui_impl_sdlrenderer3.h"
 
-const float SynthUI::noteFrequencies[13] = {
-    261.63f, 277.18f, 293.66f, 311.13f, 329.63f, 349.23f, 369.99f,
-    392.00f, 415.30f, 440.00f, 466.16f, 493.88f, 523.25f
-};
-
-const char* SynthUI::noteNames[13] = {
-    "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B", "C"
-};
-
-const char* SynthUI::keyboardKeys = "sedrfgyhuijkl";
-
+// Using shared_ptr to share ownership of the same SynthetizerConfig
+// between UI and audio engine. The object is automatically destroyed
+// when no shared_ptr instances reference it anymore.
 SynthUI::SynthUI(std::shared_ptr<SynthetizerConfig> synthParams)
     : window(nullptr), renderer(nullptr), params(synthParams), currentOctave(0) {
+    // Initialize all 13 key states (physical/virtual keyboard keys) to "not pressed" (false)
     std::fill(keyStates, keyStates + 13, false);
 }
 
@@ -25,28 +18,32 @@ SynthUI::~SynthUI() {
     shutdown();
 }
 
-bool SynthUI::initialize() {
+void SynthUI::initialize() {
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         std::cerr << "SDL init failed: " << SDL_GetError() << std::endl;
-        return false;
+        std::exit(EXIT_FAILURE);
     }
 
-    window = SDL_CreateWindow("Synth", 800, 600, SDL_WINDOW_RESIZABLE);
+    // Resizable window
+    window = SDL_CreateWindow("Synth", 900, 700, SDL_WINDOW_RESIZABLE);
     if (!window) {
         std::cerr << "Window creation failed: " << SDL_GetError() << std::endl;
-        return false;
+        std::exit(EXIT_FAILURE);
     }
 
     renderer = SDL_CreateRenderer(window, nullptr);
     if (!renderer) {
         std::cerr << "Renderer creation failed: " << SDL_GetError() << std::endl;
-        return false;
+        std::exit(EXIT_FAILURE);
     }
 
     // Setup ImGui
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
+
+    // Imgui return a ref to a structure imguiIo that contains every in and out parameter
     ImGuiIO& io = ImGui::GetIO(); (void)io;
+    // Nav with keyboard
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
 
     ImGui::StyleColorsDark();
@@ -55,7 +52,7 @@ bool SynthUI::initialize() {
     ImGui_ImplSDLRenderer3_Init(renderer);
 
     isInitialized = true;
-    return true;
+    std::cout << "UI initialized successfully!" << std::endl;
 }
 
 void SynthUI::render() {
@@ -63,22 +60,36 @@ void SynthUI::render() {
     ImGui_ImplSDL3_NewFrame();
     ImGui::NewFrame();
 
-    ImGui::Begin("Synthétiseur 4DEV4D");
+    // good window without border
+    ImGui::SetNextWindowPos(ImVec2(0, 0));
+    ImGui::SetNextWindowSize(ImGui::GetIO().DisplaySize);
+    ImGui::Begin("synth", nullptr,
+        ImGuiWindowFlags_NoTitleBar |
+        ImGuiWindowFlags_NoResize |
+        ImGuiWindowFlags_NoMove |
+        ImGuiWindowFlags_NoCollapse);
 
+    // every component of the app
     renderOscillatorControls();
+    ImGui::Separator();
     renderEnvelopeControls();
+    ImGui::Separator();
     renderFilterControls();
+    ImGui::Separator();
+
     renderVolumeControl();
     renderOctaveControl();
     renderVirtualKeyboard();
 
     ImGui::End();
 
-    // Rendering avec SDL Renderer
+    // Rendering with sdl render
     ImGui::Render();
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+    SDL_SetRenderDrawColor(renderer, 45, 45, 48, 255);
     SDL_RenderClear(renderer);
+    // draw ui
     ImGui_ImplSDLRenderer3_RenderDrawData(ImGui::GetDrawData(), renderer);
+    // back buffer to front
     SDL_RenderPresent(renderer);
 }
 
@@ -103,10 +114,13 @@ void SynthUI::shutdown() {
 }
 
 bool SynthUI::handleEvents() {
+    // gets every event
     SDL_Event event;
     while (SDL_PollEvent(&event)) {
+        // give sdl event to imgui
         ImGui_ImplSDL3_ProcessEvent(&event);
 
+        //quit "x"
         if (event.type == SDL_EVENT_QUIT) {
             return false;
         }
@@ -116,20 +130,32 @@ bool SynthUI::handleEvents() {
     return true;
 }
 
+
 void SynthUI::handleKeyboard(const SDL_Event& event) {
+    // Check if the event is either a key press or key release
     if (event.type == SDL_EVENT_KEY_DOWN || event.type == SDL_EVENT_KEY_UP) {
+        // isDown = true if key pressed, false if released
         bool isDown = (event.type == SDL_EVENT_KEY_DOWN);
 
-        // Find which key was pressed
+        SDL_Keycode keysSDL3[13] = {
+            SDLK_S, SDLK_E, SDLK_D, SDLK_R, SDLK_F, SDLK_G, SDLK_Y,
+            SDLK_H, SDLK_U, SDLK_J, SDLK_I, SDLK_K, SDLK_L
+        };
+
+        // Iterate through all synth keys to see if one matches the event key
         for (int i = 0; i < 13; ++i) {
-            if (event.key.key == keyboardKeys[i]) {
+            if (event.key.key == keysSDL3[i]) {
+                // Store previous state of this key
                 bool wasDown = keyStates[i];
+                // Update current state
                 keyStates[i] = isDown;
 
                 if (isDown && !wasDown) {
-                    if (noteOnCallback) noteOnCallback(i);
+                    // Key was just pressed → set note number in parameters
+                    params->noteNumber = i;
                 } else if (!isDown && wasDown) {
-                    if (noteOffCallback) noteOffCallback();
+                    // Key was just released → reset note number
+                    params->noteNumber = -1;
                 }
                 break;
             }
@@ -137,13 +163,15 @@ void SynthUI::handleKeyboard(const SDL_Event& event) {
     }
 }
 
-float SynthUI::noteToFrequency(int note, int octave) {
-    return 220.0f * std::pow(2.0f, (octave + note) / 12.0f);
+
+float SynthUI::noteToFrequency(int noteIndex, int octaveOffset) {
+    int semitoneOffset = ((octaveOffset + 1) * 12) + noteIndex - 9;
+    return 440.0f * std::pow(2.0f, semitoneOffset / 12.0f);
 }
 
 void SynthUI::renderOscillatorControls() {
-    if (ImGui::CollapsingHeader("Oscillators", ImGuiTreeNodeFlags_DefaultOpen)) {
-        // Oscillator 1
+        // Oscillator 1,Use .load() to safely read the atomic value from another thread (audio thread) without data races
+
         bool osc1_enabled = params->osc1_enabled.load();
         if (ImGui::Checkbox("Oscillator 1", &osc1_enabled)) {
             params->osc1_enabled = osc1_enabled;
@@ -192,10 +220,8 @@ void SynthUI::renderOscillatorControls() {
             params->osc3_freq_offset = osc3_offset;
         }
     }
-}
 
 void SynthUI::renderEnvelopeControls() {
-    if (ImGui::CollapsingHeader("Envelope", ImGuiTreeNodeFlags_DefaultOpen)) {
         float attack = params->attack_time.load();
         if (ImGui::SliderFloat("Attack", &attack, 0.0f, 1.0f)) {
             params->attack_time = attack;
@@ -205,11 +231,9 @@ void SynthUI::renderEnvelopeControls() {
         if (ImGui::SliderFloat("Release", &release, 0.0f, 2.0f)) {
             params->release_time = release;
         }
-    }
 }
 
 void SynthUI::renderFilterControls() {
-    if (ImGui::CollapsingHeader("Filter", ImGuiTreeNodeFlags_DefaultOpen)) {
         float cutoff = params->filter_cutoff.load();
         if (ImGui::SliderFloat("Filter Cutoff", &cutoff, 20.0f, 20000.0f, "%.0f Hz")) {
             params->filter_cutoff = cutoff;
@@ -221,28 +245,24 @@ void SynthUI::renderFilterControls() {
         }
 
         float autoAmount = params->filter_auto_amount.load();
-        if (ImGui::SliderFloat("Filter auto-variation amount", &autoAmount, 0.0f, 1.0f)) {
+        if (ImGui::SliderFloat("Filter LFO amount", &autoAmount, 0.0f, 1.0f)) {
             params->filter_auto_amount = autoAmount;
         }
 
         float autoFreq = params->filter_auto_freq.load();
-        if (ImGui::SliderFloat("Filter auto-variation frequency", &autoFreq, 1.0f, 20.0f)) {
+        if (ImGui::SliderFloat("Filter LFO frequency", &autoFreq, 1.0f, 20.0f)) {
             params->filter_auto_freq = autoFreq;
         }
     }
-}
 
 void SynthUI::renderVolumeControl() {
-    if (ImGui::CollapsingHeader("Volume", ImGuiTreeNodeFlags_DefaultOpen)) {
         float volume = params->volume.load();
         if (ImGui::SliderFloat("Volume", &volume, 0.0f, 1.0f)) {
             params->volume = volume;
         }
-    }
 }
 
 void SynthUI::renderOctaveControl() {
-    if (ImGui::CollapsingHeader("Octave Control", ImGuiTreeNodeFlags_DefaultOpen)) {
         if (ImGui::Button("-")) {
             if (currentOctave > -2) {
                 currentOctave--;
@@ -259,41 +279,76 @@ void SynthUI::renderOctaveControl() {
             }
         }
     }
-}
 
+// Renders a 13-key virtual keyboard using ImGui.
+// - Supports mouse-driven note on/off (monophonic).
+// - Visually reflects both physical (real keyboard) and virtual (mouse) presses.
 void SynthUI::renderVirtualKeyboard() {
-    if (ImGui::CollapsingHeader("Virtual Keyboard", ImGuiTreeNodeFlags_DefaultOpen)) {
-        for (int i = 0; i < 13; ++i) {
-            if (i > 0) ImGui::SameLine();
+    static bool virtualKeyStates[13] = {false};
+    static int lastVirtualKeyPressed = -1;
 
-            bool isPressed = keyStates[i];
-            if (isPressed) {
-                ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.8f, 0.6f, 0.2f, 1.0f));
-            }
+    for (int i = 0; i < 13; ++i) {
+        if (i > 0) ImGui::SameLine();
 
-            std::string buttonLabel = std::to_string(i);
+        // Visual state = pressed by physical keyboard OR by mouse
+        bool isVisuallyPressed = keyStates[i] || virtualKeyStates[i];
 
-            if (ImGui::Button(buttonLabel.c_str())) {
-                if (!isPressed) {
-                    if (noteOnCallback) noteOnCallback(i);
-                    keyStates[i] = true;
+        if (isVisuallyPressed) {
+            // Highlight pressed keys
+            ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.8f, 0.6f, 0.2f, 1.0f));
+        }
+
+        std::string buttonLabel = std::to_string(i);
+
+
+        // creating the button
+        if (ImGui::Button(buttonLabel.c_str())) {
+        }
+
+        if (ImGui::IsItemActive() && ImGui::IsMouseDown(0)) {
+            if (!virtualKeyStates[i]) {
+
+                // if another virtual key was active, turn it off first
+                if (lastVirtualKeyPressed != -1 && lastVirtualKeyPressed != i) {
+                    virtualKeyStates[lastVirtualKeyPressed] = false;
+                    params->noteNumber = -1;
+                    params->note_on = false;
                 }
+                // Turn this key on
+                params->noteNumber = i;
+                params->note_on = true;
+                virtualKeyStates[i] = true;
+                lastVirtualKeyPressed = i;
             }
 
-            if (isPressed) {
-                ImGui::PopStyleColor();
+            // NOTE OFF (mouse released / item deactive)
+        } else if (virtualKeyStates[i] && !ImGui::IsItemActive()) {
+
+            // If this key was virtually pressed and is no longer active, turn it off
+            virtualKeyStates[i] = false;
+            params->noteNumber = -1;
+            params->note_on = false;
+
+            // Reset mono tracking if we just released the last pressed key
+            if (lastVirtualKeyPressed == i) {
+                lastVirtualKeyPressed = -1;
             }
         }
 
-        ImGui::Text("Keyboard mapping: %s", keyboardKeys);
-        ImGui::Text("Notes: 0=C, 1=C#, 2=D, 3=D#, 4=E, 5=F, 6=F#, 7=G, 8=G#, 9=A, 10=A#, 11=B, 12=C");
+
+        // Restore previous button color if we pushed one
+        if (isVisuallyPressed) {
+            ImGui::PopStyleColor();
+        }
     }
+
+    ImGui::Text("Physical keys: S E D R F G Y H U J I K L");
 }
 
-void SynthUI::setNoteOnCallback(std::function<void(int)> callback) {
-    noteOnCallback = callback;
-}
-
-void SynthUI::setNoteOffCallback(std::function<void()> callback) {
-    noteOffCallback = callback;
+void SynthUI::run() {
+    bool running = true;
+    while (running) {
+        running = handleEvents();
+        render();
+    }
 }

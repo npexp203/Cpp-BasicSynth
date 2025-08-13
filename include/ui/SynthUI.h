@@ -12,27 +12,22 @@ public:
     SynthUI(std::shared_ptr<SynthetizerConfig> synthParams);
     ~SynthUI();
 
-    bool initialize();
+    void initialize();
     void shutdown();
     bool handleEvents();
     void render();
-    void setNoteOnCallback(std::function<void(int)> callback);
-    void setNoteOffCallback(std::function<void()> callback);
+    void run();
 
 private:
-    std::function<void(int)> noteOnCallback;
-    std::function<void()> noteOffCallback;
     SDL_Window* window;
     SDL_Renderer* renderer;
     std::shared_ptr<SynthetizerConfig> params;
-//s
     int currentOctave;
     bool keyStates[13];
     bool isInitialized = false;
 
-    static const float noteFrequencies[13];
+
     static const char* noteNames[13];
-    static const char* keyboardKeys;
 
     void renderOscillatorControls();
     void renderEnvelopeControls();

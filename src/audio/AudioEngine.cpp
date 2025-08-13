@@ -12,60 +12,39 @@ AudioEngine::~AudioEngine() {
     shutdown();
 }
 
-bool AudioEngine::initialize() {
+void AudioEngine::initialize() {
+    // Initialize PortAudio
     PaError err = Pa_Initialize();
     if (err != paNoError) {
-        std::cerr << "PortAudio init failed: " << Pa_GetErrorText(err) << std::endl;
-        return false;
+        std::cerr << "PortAudio error in Pa_Initialize(): " << Pa_GetErrorText(err) << std::endl;
+        std::exit(EXIT_FAILURE);
     }
 
-    PaStreamParameters outputParameters;
-    outputParameters.device = Pa_GetDefaultOutputDevice();
-    if (outputParameters.device == paNoDevice) {
-        std::cerr << "No default output device" << std::endl;
-        return false;
-    }
-
-    outputParameters.channelCount = CHANNELS;
-    outputParameters.sampleFormat = paFloat32;
-    outputParameters.suggestedLatency = Pa_GetDeviceInfo(outputParameters.device)->defaultLowOutputLatency;
-    outputParameters.hostApiSpecificStreamInfo = nullptr;
-
-    err = Pa_OpenStream(
-        &stream,
-        nullptr,
-        &outputParameters,
-        SAMPLE_RATE,
-        BUFFER_SIZE,
-        paClipOff,
-        audioCallback,
-        this);
+    Pa_OpenDefaultStream(&stream,
+                     0,
+                     2,
+                     paFloat32,
+                     SAMPLE_RATE,
+                     FRAMES_PER_BUFFER,
+                     audioCallback,
+                     this);
 
     if (err != paNoError) {
         std::cerr << "PortAudio open failed: " << Pa_GetErrorText(err) << std::endl;
-        return false;
+        std::exit(EXIT_FAILURE);
     }
 
-    return true;
-}
-
-bool AudioEngine::start() {
-    if (!stream) return false;
-
-    PaError err = Pa_StartStream(stream);
+    // Start stream immediately
+    err = Pa_StartStream(stream);
     if (err != paNoError) {
         std::cerr << "PortAudio start failed: " << Pa_GetErrorText(err) << std::endl;
-        return false;
+        std::exit(EXIT_FAILURE);
     }
 
-    return true;
+    std::cout << "Audio engine initialized successfully!" << std::endl;
 }
 
-void AudioEngine::stop() {
-    if (stream) {
-        Pa_StopStream(stream);
-    }
-}
+
 
 void AudioEngine::shutdown() {
     if (stream) {
@@ -89,6 +68,24 @@ int AudioEngine::audioCallback(const void* inputBuffer, void* outputBuffer,
 
 void AudioEngine::processAudio(float* outputBuffer, int numFrames) {
 
+    // Clear the stereo output buffer (L+R channels, so numFrames * 2 samples)
+    std::fill_n(outputBuffer, numFrames * 2, 0.0f);
+    // Clear the internal mixing buffer
+    std::fill(mixBuffer.begin(), mixBuffer.end(), 0.0f);
+
+    static int lastNoteNumber = -1;
+    int currentNote = params->noteNumber.load();
+
+    // If the note number changed since the last callback
+    if (currentNote != lastNoteNumber) {
+        if (currentNote >= 0) {
+            noteOn(currentNote);
+        } else {
+            noteOff();
+        }
+        // Remember this note for next time
+        lastNoteNumber = currentNote;
+    }
     float noteFreq = params->note_frequency.load();
 
 
